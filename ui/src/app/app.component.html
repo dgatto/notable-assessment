@@ -1,0 +1,30 @@
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer class="sidenav-lefthand" mode="side" opened>
+    <p class="notable-header">notable</p>
+    <table class="physicians-table">
+      <h2>Physicians</h2>
+      <tr *ngFor="let physician of physicians">
+        <td (click)="onClick(physician)">
+          <li>{{ physician.name }}</li>
+        </td>
+      </tr>
+    </table>
+  </mat-drawer>
+  <mat-drawer-content class="sidenav-righthand">
+    <h2>{{ headerPhysician?.name }}</h2>
+    <h4>{{ headerPhysician?.email }}</h4>
+
+    <table class="appointments-table">
+      <th>#</th>
+      <th>Name</th>
+      <th>Time</th>
+      <th>Kind</th>
+      <tr *ngFor="let appointment of appointments; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ appointment.patientName }}</td>
+        <td>{{ appointment.date | date: 'shortTime' }}</td>
+        <td>{{ appointment.type }}</td>
+      </tr>
+    </table>
+  </mat-drawer-content>
+</mat-drawer-container>
